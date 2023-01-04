@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/devcontainers/python:0-3.11
 ENV PYTHONUNBUFFERED 1
 
 #This if for railway deployment only
-WORKDIR /app
+WORKDIR /code/app
 
 # [Optional] If your requirements rarely change, uncomment this section to add them to the image.
 COPY ./requirements.txt /code/requirements.txt
@@ -20,7 +20,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 # && sudo apt-get install libsqlite3-dev && sudo apt-get install sqlite3
 
 # Next section is for Railway deployment setup
-COPY ./app /app
+COPY ./app /code/app
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
 
