@@ -22,5 +22,5 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 # Next section is for Railway deployment setup
 COPY ./app /code/app
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "$PORT"]
 
